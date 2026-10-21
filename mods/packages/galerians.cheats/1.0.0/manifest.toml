@@ -1,0 +1,855 @@
+format_version = 5
+id = "galerians.cheats"
+version = "1.0.0"
+name = "Galerians Cheats"
+author = "goodshepherd23 (codes from the DuckStation cheat database and Almar's Guides)"
+description = "GameShark, CodeBreaker and Action Replay cheats for Galerians (USA), all three discs. Memory cheats are rewritten every frame; code patches change an instruction in the game while they are on. All are off by default."
+resolver = "declarative"
+save_compatibility = "shared"
+
+[[target]]
+game_id = "SLUS-00986"
+
+[[target]]
+game_id = "SLUS-01098"
+
+[[target]]
+game_id = "SLUS-01099"
+
+[[feature]]
+id = "infinite-hp"
+name = "Infinite HP"
+description = "Rion's health stays full (801C2F9C 00C8)."
+group = "Cheats"
+default_enabled = false
+
+[[plugin]]
+feature = "infinite-hp"
+id = "galerians.cheat.infinite-hp"
+
+[[feature]]
+id = "empty-ap"
+name = "Always Empty AP"
+description = "The AP gauge stays empty, so Rion never goes into Shorting (801AF96C 0000)."
+group = "Cheats"
+default_enabled = false
+
+[[plugin]]
+feature = "empty-ap"
+id = "galerians.cheat.empty-ap"
+
+[[feature]]
+id = "infinite-nalcon"
+name = "Infinite Nalcon PPEC"
+description = "The Nalcon PPEC gauge stays full (801AF978 00C8)."
+group = "Cheats"
+default_enabled = false
+
+[[plugin]]
+feature = "infinite-nalcon"
+id = "galerians.cheat.infinite-nalcon"
+
+[[feature]]
+id = "infinite-red"
+name = "Infinite Red PPEC"
+description = "The Red PPEC gauge stays full (801AF97C 00C8)."
+group = "Cheats"
+default_enabled = false
+
+[[plugin]]
+feature = "infinite-red"
+id = "galerians.cheat.infinite-red"
+
+[[feature]]
+id = "infinite-dfelon"
+name = "Infinite D-Felon PPEC"
+description = "The D-Felon PPEC gauge stays full (801AF980 00C8)."
+group = "Cheats"
+default_enabled = false
+
+[[plugin]]
+feature = "infinite-dfelon"
+id = "galerians.cheat.infinite-dfelon"
+
+[[feature]]
+id = "psychic-max"
+name = "Psychic Power Level Maxed"
+description = "Psychic power level is held at 3 (301AF994 0003)."
+group = "Cheats"
+default_enabled = false
+
+[[plugin]]
+feature = "psychic-max"
+id = "galerians.cheat.psychic-max"
+
+[[feature]]
+id = "have-dfelon"
+name = "Have D-Felon Ability"
+description = "Unlocks the D-Felon power (801AF9AE FFFF)."
+group = "Cheats"
+default_enabled = false
+
+[[plugin]]
+feature = "have-dfelon"
+id = "galerians.cheat.have-dfelon"
+
+[[feature]]
+id = "timer-zero"
+name = "Overall Time Is 0:00:00"
+description = "Holds the play-time clock at zero (801AFDEC 0000)."
+group = "Cheats"
+default_enabled = false
+
+[[plugin]]
+feature = "timer-zero"
+id = "galerians.cheat.timer-zero"
+
+[[feature]]
+id = "max-item-slots"
+name = "Have Max Item Slots"
+description = "Gives the maximum 40 item slots (801AFAFE 0028)."
+group = "Cheats"
+default_enabled = false
+
+[[plugin]]
+feature = "max-item-slots"
+id = "galerians.cheat.max-item-slots"
+
+[[feature]]
+id = "max-charge"
+name = "Max Charge"
+description = "Holds the psychic charge meter full (301C2FA6 00C8)."
+group = "Cheats"
+default_enabled = false
+
+[[plugin]]
+feature = "max-charge"
+id = "galerians.cheat.max-charge"
+
+[[feature]]
+id = "all-movies"
+name = "Have All Movies"
+description = "Unlocks every movie in Movie Preview (801FD004 FFFFFFFF)."
+group = "Cheats"
+default_enabled = false
+
+[[plugin]]
+feature = "all-movies"
+id = "galerians.cheat.all-movies"
+
+[[feature]]
+id = "no-knockdown"
+name = "Never Get Knocked Down"
+description = "Enemy attacks no longer knock Rion down or slow him (D01C2FD4 000E / 000C -> 0000)."
+group = "Cheats"
+default_enabled = false
+
+[[plugin]]
+feature = "no-knockdown"
+id = "galerians.cheat.no-knockdown"
+
+[[feature]]
+id = "quick-turn"
+name = "Quick Turn (Down + Square)"
+description = "Hold Down and press Square to spin round quickly, like Resident Evil 3."
+group = "Cheats"
+default_enabled = false
+
+[[plugin]]
+feature = "quick-turn"
+id = "galerians.cheat.quick-turn"
+
+[[feature]]
+id = "shorting-on-demand"
+name = "Cause Shorting (L1 + L2)"
+description = "Press L1 + L2 together to fill the AP gauge and trigger Shorting."
+group = "Cheats"
+default_enabled = false
+
+[[plugin]]
+feature = "shorting-on-demand"
+id = "galerians.cheat.shorting-on-demand"
+
+[[feature]]
+id = "hud"
+name = "Screen Display"
+description = "Forces the map on, or hides the gauges (801AFDF2 0100 / 0800)."
+group = "Cheats"
+default_enabled = false
+
+[[option]]
+feature = "hud"
+id = "mode"
+label = "Mode"
+description = "What to force on screen."
+group = "Cheats"
+type = "choice"
+default = "map"
+
+[[option.choice]]
+value = "map"
+label = "Map always on"
+
+[[option.choice]]
+value = "no-meters"
+label = "No meters on screen"
+
+[[plugin]]
+feature = "hud"
+id = "galerians.cheat.hud"
+
+[[feature]]
+id = "instant-charge"
+name = "Instant Full Charge (R1)"
+description = "Press R1 to charge psychic power straight to the chosen level (D01C2F94 0008)."
+group = "Cheats"
+default_enabled = false
+
+[[option]]
+feature = "instant-charge"
+id = "level"
+label = "Charge level"
+description = "Level reached when you press R1."
+group = "Cheats"
+type = "choice"
+default = "3"
+
+[[option.choice]]
+value = "1"
+label = "Level 1"
+
+[[option.choice]]
+value = "2"
+label = "Level 2"
+
+[[option.choice]]
+value = "3"
+label = "Level 3"
+
+[[plugin]]
+feature = "instant-charge"
+id = "galerians.cheat.instant-charge"
+
+[[feature]]
+id = "kills"
+name = "Number of Kills"
+description = "Holds the kill counter at the chosen number (801AF99C)."
+group = "Cheats"
+default_enabled = false
+
+[[option]]
+feature = "kills"
+id = "count"
+label = "Kills"
+description = "Kill count to hold."
+group = "Cheats"
+type = "integer"
+min = 0
+max = 9999
+step = 1
+default = 0
+
+[[plugin]]
+feature = "kills"
+id = "galerians.cheat.kills"
+
+[[feature]]
+id = "item-slot"
+name = "Item Modifier"
+description = "Puts the chosen item in the chosen item slot. Leave it on until you have the item, then turn it off."
+group = "Cheats"
+default_enabled = false
+
+[[option]]
+feature = "item-slot"
+id = "slot"
+label = "Slot"
+description = "Item slot to fill (1 to 40)."
+group = "Cheats"
+type = "choice"
+default = "1"
+
+[[option.choice]]
+value = "1"
+label = "Slot 1"
+
+[[option.choice]]
+value = "2"
+label = "Slot 2"
+
+[[option.choice]]
+value = "3"
+label = "Slot 3"
+
+[[option.choice]]
+value = "4"
+label = "Slot 4"
+
+[[option.choice]]
+value = "5"
+label = "Slot 5"
+
+[[option.choice]]
+value = "6"
+label = "Slot 6"
+
+[[option.choice]]
+value = "7"
+label = "Slot 7"
+
+[[option.choice]]
+value = "8"
+label = "Slot 8"
+
+[[option.choice]]
+value = "9"
+label = "Slot 9"
+
+[[option.choice]]
+value = "10"
+label = "Slot 10"
+
+[[option.choice]]
+value = "11"
+label = "Slot 11"
+
+[[option.choice]]
+value = "12"
+label = "Slot 12"
+
+[[option.choice]]
+value = "13"
+label = "Slot 13"
+
+[[option.choice]]
+value = "14"
+label = "Slot 14"
+
+[[option.choice]]
+value = "15"
+label = "Slot 15"
+
+[[option.choice]]
+value = "16"
+label = "Slot 16"
+
+[[option.choice]]
+value = "17"
+label = "Slot 17"
+
+[[option.choice]]
+value = "18"
+label = "Slot 18"
+
+[[option.choice]]
+value = "19"
+label = "Slot 19"
+
+[[option.choice]]
+value = "20"
+label = "Slot 20"
+
+[[option.choice]]
+value = "21"
+label = "Slot 21"
+
+[[option.choice]]
+value = "22"
+label = "Slot 22"
+
+[[option.choice]]
+value = "23"
+label = "Slot 23"
+
+[[option.choice]]
+value = "24"
+label = "Slot 24"
+
+[[option.choice]]
+value = "25"
+label = "Slot 25"
+
+[[option.choice]]
+value = "26"
+label = "Slot 26"
+
+[[option.choice]]
+value = "27"
+label = "Slot 27"
+
+[[option.choice]]
+value = "28"
+label = "Slot 28"
+
+[[option.choice]]
+value = "29"
+label = "Slot 29"
+
+[[option.choice]]
+value = "30"
+label = "Slot 30"
+
+[[option.choice]]
+value = "31"
+label = "Slot 31"
+
+[[option.choice]]
+value = "32"
+label = "Slot 32"
+
+[[option.choice]]
+value = "33"
+label = "Slot 33"
+
+[[option.choice]]
+value = "34"
+label = "Slot 34"
+
+[[option.choice]]
+value = "35"
+label = "Slot 35"
+
+[[option.choice]]
+value = "36"
+label = "Slot 36"
+
+[[option.choice]]
+value = "37"
+label = "Slot 37"
+
+[[option.choice]]
+value = "38"
+label = "Slot 38"
+
+[[option.choice]]
+value = "39"
+label = "Slot 39"
+
+[[option.choice]]
+value = "40"
+label = "Slot 40"
+
+[[option]]
+feature = "item-slot"
+id = "item"
+label = "Item"
+description = "Item to put in that slot."
+group = "Cheats"
+type = "choice"
+default = "02"
+
+[[option.choice]]
+value = "00"
+label = "Security Card (00)"
+
+[[option.choice]]
+value = "01"
+label = "Security Card (01)"
+
+[[option.choice]]
+value = "02"
+label = "Beeject (02)"
+
+[[option.choice]]
+value = "03"
+label = "Freezer Room Key (03)"
+
+[[option.choice]]
+value = "04"
+label = "PPEC Storage Key (04)"
+
+[[option.choice]]
+value = "05"
+label = "Fuse (05)"
+
+[[option.choice]]
+value = "06"
+label = "Liquid Explosive (06)"
+
+[[option.choice]]
+value = "07"
+label = "Liquid Explosive (07)"
+
+[[option.choice]]
+value = "08"
+label = "Security Card (08)"
+
+[[option.choice]]
+value = "09"
+label = "Special PPEC Office Key (09)"
+
+[[option.choice]]
+value = "0a"
+label = "Special PPEC Office Key (0A)"
+
+[[option.choice]]
+value = "0b"
+label = "Test Lab Key (0B)"
+
+[[option.choice]]
+value = "0c"
+label = "Control Room Key (0C)"
+
+[[option.choice]]
+value = "0d"
+label = "Research Lab Key (0D)"
+
+[[option.choice]]
+value = "0e"
+label = "Two-Headed Snake (0E)"
+
+[[option.choice]]
+value = "0f"
+label = "Two-Headed Monkey (0F)"
+
+[[option.choice]]
+value = "10"
+label = "Two-Headed Wolf (10)"
+
+[[option.choice]]
+value = "11"
+label = "Two-Headed Eagle (11)"
+
+[[option.choice]]
+value = "12"
+label = "Two-Headed Eagle (12)"
+
+[[option.choice]]
+value = "13"
+label = "Backdoor Key (13)"
+
+[[option.choice]]
+value = "14"
+label = "Door Knob (14)"
+
+[[option.choice]]
+value = "15"
+label = "9 Ball (15)"
+
+[[option.choice]]
+value = "16"
+label = "Mother's Ring (16)"
+
+[[option.choice]]
+value = "17"
+label = "Father's Ring (17)"
+
+[[option.choice]]
+value = "18"
+label = "Lilia's Doll (18)"
+
+[[option.choice]]
+value = "19"
+label = "Metamorphosis (19)"
+
+[[option.choice]]
+value = "1a"
+label = "Bedroom Key (1A)"
+
+[[option.choice]]
+value = "1b"
+label = "Second Floor Key (1B)"
+
+[[option.choice]]
+value = "1c"
+label = "Medical Staff Notes (1C)"
+
+[[option.choice]]
+value = "1d"
+label = "G Project Report (1D)"
+
+[[option.choice]]
+value = "1e"
+label = "Photo of Parents (1E)"
+
+[[option.choice]]
+value = "1f"
+label = "Rion's Test Data (1F)"
+
+[[option.choice]]
+value = "20"
+label = "Dr. Lem's Notes (20)"
+
+[[option.choice]]
+value = "21"
+label = "New Replicative Computer Theory (21)"
+
+[[option.choice]]
+value = "22"
+label = "Dr. Pascalle's Diary (22)"
+
+[[option.choice]]
+value = "23"
+label = "Letter from Elsa (23)"
+
+[[option.choice]]
+value = "24"
+label = "Newspaper (24)"
+
+[[option.choice]]
+value = "25"
+label = "3 Ball (25)"
+
+[[option.choice]]
+value = "26"
+label = "Shed Key (26)"
+
+[[option.choice]]
+value = "27"
+label = "Letter from Lilia (27)"
+
+[[plugin]]
+feature = "item-slot"
+id = "galerians.cheat.item-slot"
+
+[[feature]]
+id = "medicine-slot"
+name = "Medicine Modifier"
+description = "Puts the chosen medicine in the chosen medicine slot."
+group = "Cheats"
+default_enabled = false
+
+[[option]]
+feature = "medicine-slot"
+id = "slot"
+label = "Slot"
+description = "Medicine slot to fill (1 to 12)."
+group = "Cheats"
+type = "choice"
+default = "1"
+
+[[option.choice]]
+value = "1"
+label = "Slot 1"
+
+[[option.choice]]
+value = "2"
+label = "Slot 2"
+
+[[option.choice]]
+value = "3"
+label = "Slot 3"
+
+[[option.choice]]
+value = "4"
+label = "Slot 4"
+
+[[option.choice]]
+value = "5"
+label = "Slot 5"
+
+[[option.choice]]
+value = "6"
+label = "Slot 6"
+
+[[option.choice]]
+value = "7"
+label = "Slot 7"
+
+[[option.choice]]
+value = "8"
+label = "Slot 8"
+
+[[option.choice]]
+value = "9"
+label = "Slot 9"
+
+[[option.choice]]
+value = "10"
+label = "Slot 10"
+
+[[option.choice]]
+value = "11"
+label = "Slot 11"
+
+[[option.choice]]
+value = "12"
+label = "Slot 12"
+
+[[option]]
+feature = "medicine-slot"
+id = "medicine"
+label = "Medicine"
+description = "Medicine to put in that slot."
+group = "Cheats"
+type = "choice"
+default = "03"
+
+[[option.choice]]
+value = "00"
+label = "Nalcon"
+
+[[option.choice]]
+value = "01"
+label = "Red"
+
+[[option.choice]]
+value = "02"
+label = "D-Felon"
+
+[[option.choice]]
+value = "03"
+label = "Recovery Capsule"
+
+[[option.choice]]
+value = "04"
+label = "Delmetor"
+
+[[option.choice]]
+value = "05"
+label = "Appolinar"
+
+[[option.choice]]
+value = "06"
+label = "Skip"
+
+[[plugin]]
+feature = "medicine-slot"
+id = "galerians.cheat.medicine-slot"
+
+[[feature]]
+id = "action"
+name = "Actions Modifier (experimental)"
+description = "Forces Rion's current action to a fixed value, 0 to 22 (801C2FA4). The values are undocumented and some can lock up the game: save first."
+group = "Cheats"
+default_enabled = false
+
+[[option]]
+feature = "action"
+id = "value"
+label = "Action"
+description = "Action number to force."
+group = "Cheats"
+type = "integer"
+min = 0
+max = 22
+step = 1
+default = 0
+
+[[plugin]]
+feature = "action"
+id = "galerians.cheat.action"
+
+[[feature]]
+id = "room"
+name = "Room Modifier (experimental)"
+description = "Writes the three room values (801912DA, 801912DC, 801912DE). What each value selects is undocumented, so this can send you somewhere broken: save first."
+group = "Cheats"
+default_enabled = false
+
+[[option]]
+feature = "room"
+id = "a"
+label = "Value 1"
+description = "801912DA (0 to 15)."
+group = "Cheats"
+type = "integer"
+min = 0
+max = 15
+step = 1
+default = 0
+
+[[option]]
+feature = "room"
+id = "b"
+label = "Value 2"
+description = "801912DC (0 to 15)."
+group = "Cheats"
+type = "integer"
+min = 0
+max = 15
+step = 1
+default = 0
+
+[[option]]
+feature = "room"
+id = "c"
+label = "Value 3"
+description = "801912DE (0 to 255)."
+group = "Cheats"
+type = "integer"
+min = 0
+max = 255
+step = 1
+default = 0
+
+[[plugin]]
+feature = "room"
+id = "galerians.cheat.room"
+
+[[feature]]
+id = "walk-through-walls"
+name = "Walk Through Walls (code patch)"
+description = "Turns off wall collision. You can leave the map or skip story triggers and get stuck: save first. Set it before pressing PLAY; it stays on for the whole session."
+group = "Cheats"
+default_enabled = false
+
+[[plugin]]
+feature = "walk-through-walls"
+id = "galerians.cheat.walk-through-walls"
+
+[[feature]]
+id = "invulnerable"
+name = "Invulnerable to Most Enemies (code patch)"
+description = "Most enemy attacks no longer hurt Rion. Set it before pressing PLAY; it stays on for the whole session."
+group = "Cheats"
+default_enabled = false
+
+[[plugin]]
+feature = "invulnerable"
+id = "galerians.cheat.invulnerable"
+
+[[feature]]
+id = "doctors-scared"
+name = "Doctors Scared of Rion (code patch)"
+description = "The hospital doctors back away instead of attacking, applied whenever that code is loaded. Set it before pressing PLAY; it stays on for the whole session."
+group = "Cheats"
+default_enabled = false
+
+[[plugin]]
+feature = "doctors-scared"
+id = "galerians.cheat.doctors-scared"
+
+[[feature]]
+id = "new-game-psychic-3"
+name = "Start New Game With Psychic Power Level 3 (code patch)"
+description = "A new game starts with psychic power at level 3. Turn it on before choosing New Game. Set it before pressing PLAY; it stays on for the whole session."
+group = "Cheats"
+default_enabled = false
+
+[[plugin]]
+feature = "new-game-psychic-3"
+id = "galerians.cheat.new-game-psychic-3"
+
+[[feature]]
+id = "shorting-no-drawbacks"
+name = "Shorting Without Any Drawbacks (code patch)"
+description = "Shorting no longer costs Rion anything. Set it before pressing PLAY; it stays on for the whole session."
+group = "Cheats"
+default_enabled = false
+
+[[plugin]]
+feature = "shorting-no-drawbacks"
+id = "galerians.cheat.shorting-no-drawbacks"
+
+[[feature]]
+id = "infinite-ppec-alt"
+name = "Infinite PPEC (all gauges, code patch)"
+description = "Using a power no longer drains any PPEC gauge. An alternative to the three gauge cheats. Set it before pressing PLAY; it stays on for the whole session."
+group = "Cheats"
+default_enabled = false
+
+[[plugin]]
+feature = "infinite-ppec-alt"
+id = "galerians.cheat.infinite-ppec-alt"
+
+[[feature]]
+id = "no-ap-alt"
+name = "No AP Gauge (code patch)"
+description = "The AP gauge never fills. An alternative to Always Empty AP. Set it before pressing PLAY; it stays on for the whole session."
+group = "Cheats"
+default_enabled = false
+
+[[plugin]]
+feature = "no-ap-alt"
+id = "galerians.cheat.no-ap-alt"

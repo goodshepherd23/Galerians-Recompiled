@@ -39,6 +39,7 @@ psxrecomp_add_game_runtime(psx-runtime
     GEN_MARKER "generated/SLUS_009.86_dispatch.c"
     GEN_FULL_GLOB "generated/SLUS_009.86_full_*.c"
     CODEGEN_SETUP_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/codegen_setup.c"
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/galerians_mods.c"
 )
 
 # Clang PGO. psxrecomp_cli.py `rebuild --force-pgo` passes -DPSX_PGO=generate
@@ -78,3 +79,13 @@ foreach(_PSX_RUNTIME_CONFIG game.toml game_options.toml)
             VERBATIM)
     endif()
 endforeach()
+
+# Game-owned mod packages (the Cheats group on the launcher's Mods page). The
+# framework stages its own catalog first and clears mods/packages each build,
+# so copy ours afterwards.
+add_custom_command(TARGET psx-runtime POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "${CMAKE_CURRENT_SOURCE_DIR}/mods/packages/galerians.cheats"
+        "$<TARGET_FILE_DIR:psx-runtime>/mods/packages/galerians.cheats"
+    COMMENT "Staging Galerians cheat package"
+    VERBATIM)
