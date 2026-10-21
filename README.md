@@ -61,13 +61,20 @@ the OpenBIOS image; `bios/openbios.bin` here is the MIT-licensed build pinned in
 `psxrecomp/bios/OpenBIOS.toml` (SHA-256 `fabe498f…1c57`), with its notice in
 `bios/OpenBIOS.LICENSE`.
 
-The patches fix two things in the pinned framework:
+The patches fix three things in the pinned framework:
 
 - `0002` makes the launcher's **PGO optimize** work on Windows. Without it, the
   training run fails with `[WinError 5] Access is denied` and writes no profile.
   `CMakeLists.txt` also wires up `PSX_PGO`, which this framework revision ignores.
 - `0003` removes thin vertical lines on tiled 2D screens when **Texture
   filtering** is set to Bilinear.
+- `0004` fixes the opening-logo transitions on the OpenGL renderer (added in
+  0.1.1). Galerians stays in 24-bit display mode from the Polygon Magic logo
+  into the intro movies and clears each frame with a fill. The renderer
+  presents 24-bit frames from its CPU copy of VRAM, but fills only reached the
+  GPU copy, so the movies' letterbox bars showed the logo's gray background
+  and its fade-out flickered. Fills now reach both copies while 24-bit mode is
+  on. The software renderer was already correct.
 
 `--force-emitters` is required. Without it, `generate` can pick up stale prebuilt
 emitters that leave the build with no BIOS backend.
@@ -86,6 +93,9 @@ the Redump dumps above.
 - The disc check passes, and the game generates and builds
 - Boots on OpenBIOS through the Crave Entertainment FMV to the title screen
 - The attract-mode FMVs and in-engine scenes render correctly
+- The opening logos (Crave, ASCII Soft, Polygon Magic) and the intro movie
+  fade and letterbox cleanly on OpenGL as of 0.1.1, checked frame by frame
+  through the debug server
 - The Windows release package, built from a fresh extract, reaches the
   Load Game screen and early gameplay (Rion in the lab with the HP/AP/Nalcon
   display)

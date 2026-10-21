@@ -1,0 +1,21 @@
+diff --git a/runtime/src/gpu_gl_renderer.c b/runtime/src/gpu_gl_renderer.c
+index 1b98f3dd..9eb847aa 100644
+--- a/runtime/src/gpu_gl_renderer.c
++++ b/runtime/src/gpu_gl_renderer.c
+@@ -2345,8 +2345,15 @@ static void glb_draw_gouraud_triangle(int x0,int y0,uint16_t c0,int x1,int y1,ui
+     gpu_triangle(x0,y0,c0, x1,y1,c1, x2,y2,c2, s_semi_en?s_semi_mode:-1);
+     precise_consumed();
+ }
++static void depth24_upload_policy(void);
+ static void glb_fill_rect(int x,int y,int w,int h,uint16_t c){
+-    if (s_cpu_auth_dual || !s_raster_ok)
++    /* While depth24 scanout is on, the CPU mirror is what gets presented and
++     * MDEC frames live only there, so a fill must land in the mirror too. A
++     * game that stays in 24-bit across several movies (Galerians: Polygon
++     * Magic logo -> intro) clears each letterboxed frame with GP0(02h); with
++     * the fill only in the FBO, the bars kept the previous movie's pixels. */
++    depth24_upload_policy();
++    if (s_cpu_auth_dual || !s_raster_ok || s_depth24_skip_up)
+         sw_fill_rect(x,y,w,h,c);
+     if (!s_raster_ok) return;
+     gpu_fill(x,y,w,h,c);
