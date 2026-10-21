@@ -1,0 +1,5 @@
+{
+  "openbios_required": true,
+  "publication_authorized": true,
+  "schema": "psx.release-pipeline.v1"
+}

@@ -1,0 +1,46 @@
+--- a/psxrecomp_cli.py
++++ b/psxrecomp_cli.py
+@@ -1511,7 +1511,43 @@
+         raise RuntimeError(err)
+ 
+ 
++def _soft_stop_windows(pid: int, timeout: int) -> None:
++    # os.kill() on Windows is TerminateProcess: it skips atexit, so the LLVM
++    # profile runtime never writes its .profraw, and os.kill(pid, 0) on the
++    # already-dead (but still-referenced) process raises WinError 5. Close
++    # the game's windows instead so SDL takes its normal quit path.
++    import ctypes
++    from ctypes import wintypes
++
++    user32 = ctypes.windll.user32
++    kernel32 = ctypes.windll.kernel32
++    WM_CLOSE = 0x0010
++    SYNCHRONIZE = 0x00100000
++    PROCESS_TERMINATE = 0x0001
++
++    @ctypes.WINFUNCTYPE(wintypes.BOOL, wintypes.HWND, wintypes.LPARAM)
++    def _close(hwnd, _lparam):
++        owner = wintypes.DWORD()
++        user32.GetWindowThreadProcessId(hwnd, ctypes.byref(owner))
++        if owner.value == pid:
++            user32.PostMessageW(hwnd, WM_CLOSE, 0, 0)
++        return True
++
++    handle = kernel32.OpenProcess(SYNCHRONIZE | PROCESS_TERMINATE, False, pid)
++    if not handle:
++        return
++    try:
++        user32.EnumWindows(_close, 0)
++        if kernel32.WaitForSingleObject(handle, timeout * 1000) != 0:
++            kernel32.TerminateProcess(handle, 1)
++    finally:
++        kernel32.CloseHandle(handle)
++
++
+ def _soft_stop(pid: int, timeout: int = 30) -> None:
++    if os.name == "nt":
++        _soft_stop_windows(pid, timeout)
++        return
+     try:
+         os.kill(pid, 15)  # SIGTERM
+     except ProcessLookupError:

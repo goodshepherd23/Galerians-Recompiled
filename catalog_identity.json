@@ -1,0 +1,48 @@
+{
+  "format_version": 1,
+  "game": {
+    "name": "Galerians",
+    "id": "SLUS-00986",
+    "boot_exe": "SLUS_009.86"
+  },
+  "marketing": {
+    "description": "Galerians: survival horror in which Rion, a boy with psychic powers, escapes a hospital with no memory of who he is. Developed by Polygon Magic.",
+    "publisher": "Crave Entertainment",
+    "year": "2000",
+    "region": "USA",
+    "players": 1
+  },
+  "rom_identity": {
+    "cue_name": "Galerians (USA) (Disc 1).cue",
+    "bin_name": "Galerians (USA) (Disc 1).bin",
+    "track_counts": [
+      1
+    ],
+    "require_cue": true,
+    "data_track": {
+      "size": 695399376,
+      "md5": "217885a22fbb0f3092f8405ce42419ea",
+      "sha1": "f69e7299e5cea91a74e1e4c9893e6781d1227d1d",
+      "crc32": "7455948e"
+    },
+    "disc_fp": "923e2d50d8ccf3d44051b2306ec78636178ea9f20d714de67b04341a7a0f4929"
+  },
+  "exe": {
+    "load_address": "0x80023000",
+    "entry_pc": "0x80165F84",
+    "text_size": "0x001D5000",
+    "stack_base": "0x801FFFF0"
+  },
+  "seeds": {
+    "count": 1130,
+    "source": "boot_exe_jal"
+  },
+  "warnings": [
+    "cue has only 1 TRACK \u2014 Track-01-only dumps fail multi-track netplay/catalog gates; prefer a full Redump cue."
+  ],
+  "notes": [
+    "entry_pc/load_address/text_size/stack_base taken from PS-X EXE header.",
+    "seeds are first-pass boot-EXE JAL targets (+ entry); expect to grow as overlays / runtime paths are discovered.",
+    "required_disc_fp is psxrecomp-toc-v1 (matches runtime DiscIdentity)."
+  ]
+}

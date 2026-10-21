@@ -1,0 +1,77 @@
+# Galerians Recompiled - Galerians (USA), SLUS-00986/01098/01099 (3 discs, one EXE).
+# Autofilled by psxrecomp probe_disc.py from the Redump dumps, then: OpenBIOS
+# (no retail BIOS dump needed), discovery = "reachable", and
+# vsync = "off": the runtime paces off a wall clock, which avoids double-speed
+# play on displays whose driver vsync does not block.
+
+[game]
+name = "Galerians"
+id = "SLUS-00986"
+players = 1
+exe = "disc/SLUS_009.86"
+# Verified as one program on N images (verify_disc_set.py).
+# Disc 1 boots; the rest are data. The runtime builds its disc
+# roster from this list and mounts the SELECTED one (remembered
+# in disc_index), so the launcher can switch discs between runs.
+# Mid-game, the in-game menu's "Change disc" swaps the mounted image.
+discs = [
+    "disc/Galerians (USA) (Disc 1).cue",
+    "disc/Galerians (USA) (Disc 2).cue",
+    "disc/Galerians (USA) (Disc 3).cue",
+]
+disc_serials = ["SLUS-00986", "SLUS-01098", "SLUS-01099"]
+load_address = "0x80023000"
+entry_pc = "0x80165F84"
+text_size = "0x001D5000"
+stack_base = "0x801FFFF0"
+
+# Digests are for data Track 01 of the Redump dump (redump.org disc 5320).
+[prepare_disc]
+out_dir = "disc"
+bin_name = "Galerians (USA) (Disc 1).bin"
+cue_name = "Galerians (USA) (Disc 1).cue"
+boot_exe = "SLUS_009.86"
+known_sizes = [695399376]
+known_md5 = [
+  "217885a22fbb0f3092f8405ce42419ea",
+]
+known_sha1 = [
+  "f69e7299e5cea91a74e1e4c9893e6781d1227d1d",
+]
+known_crc32 = [
+  "7455948e",
+]
+
+[recompiler]
+bios_config = "psxrecomp/bios/OpenBIOS.toml"
+seeds = "seeds/ghidra_funcs.txt"
+out_dir = "generated"
+strict = true
+# "reachable": the default whole-image sweep reads ~60 data blobs in this EXE
+# as 256 KB "functions" (34M lines of C). Unreached code runs interpreted.
+discovery = "reachable"
+
+[runtime]
+window_title = "Galerians Recompiled"
+memcard_dir = "saves"
+openbios = true
+
+[video]
+renderer = "opengl"
+aspect_ratio = "4:3"
+vsync = "off"
+
+[controller]
+default_mode = "digital"
+
+# Online mount gate: digests + track count + optional TOC fingerprint
+# (see docs/NETPLAY.md).
+[netplay]
+require_cue = true
+required_tracks = 1
+required_disc_fps = [
+  "923e2d50d8ccf3d44051b2306ec78636178ea9f20d714de67b04341a7a0f4929",
+  "fc97a7bb3c681b15e1bc56dc0bb3b5f30628a4989985349ab213415000506f14",
+  "52db2473042b9ae3acc50f6889ff11e7dae1b471a3d3511f153f6524e9f3646a",
+]
+required_disc_fp = "923e2d50d8ccf3d44051b2306ec78636178ea9f20d714de67b04341a7a0f4929"
