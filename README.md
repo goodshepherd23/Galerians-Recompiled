@@ -86,8 +86,11 @@ the Redump dumps above.
 - The disc check passes, and the game generates and builds
 - Boots on OpenBIOS through the Crave Entertainment FMV to the title screen
 - The attract-mode FMVs and in-engine scenes render correctly
+- The Windows release package, built from a fresh extract, reaches the
+  Load Game screen and early gameplay (Rion in the lab with the HP/AP/Nalcon
+  display)
 
-**Not tested yet:** starting a New Game and playing, saving and loading, changing
+**Not tested yet:** play beyond the first room, saving and loading, changing
 discs mid-game, a full playthrough, PGO optimize, and the Linux and macOS
 packages. Please open an issue if you hit a crash, a hang or a graphical bug,
 and include the `psx_last_run_report.json` written next to the executable.
