@@ -9,7 +9,7 @@
     "serial": "SLUS-00986"
   },
   "project": "Galerians Recompiled",
-  "status": "released",
+  "status": "playable",
   "targets": ["Windows", "Linux", "macOS"],
   "toolchain": "PSXRecomp"
 }
