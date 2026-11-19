@@ -1,0 +1,15 @@
+{
+  "$schema": "https://recomp.fyi/schema/v1.json",
+  "game": "Galerians",
+  "wikidata": "Q2055124",
+  "system": "PS1",
+  "type": "recomp",
+  "original": {
+    "region": "USA",
+    "serial": "SLUS-00986"
+  },
+  "project": "Galerians Recompiled",
+  "status": "released",
+  "targets": ["Windows", "Linux", "macOS"],
+  "toolchain": "PSXRecomp"
+}
